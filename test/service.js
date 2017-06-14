@@ -110,13 +110,18 @@ test('_records() - everything bar addresses', function (t) {
 })
 
 test('_records() - everything including addresses', function (t) {
-  var s = new Service({ name: 'Foo Bar', type: 'http', protocol: 'tcp', port: 3000, host: 'example.com', txt: { foo: 'bar' },
+  var s = new Service({ name: 'Foo Bar',
+    type: 'http',
+    protocol: 'tcp',
+    port: 3000,
+    host: 'example.com',
+    txt: { foo: 'bar' },
     addresses: { ipv4: [ '13.14.15.16' ], ipv6: [ '2001:db8::01:03', 'fe80::01:03' ] } })
   t.deepEqual(s._records(), [
-    { data: '_http._tcp.local', name: '_services._dns-sd._udp.local', ttl: 28800, type: 'PTR' },
-    { data: s.fqdn, name: '_http._tcp.local', ttl: 28800, type: 'PTR' },
-    { data: { port: 3000, target: 'example.com' }, name: s.fqdn, ttl: 120, type: 'SRV' },
-    { data: new Buffer('07666f6f3d626172', 'hex'), name: s.fqdn, ttl: 4500, type: 'TXT' },
+    { data: '_http._tcp.local', name: '_services._dns-sd._udp.local', ttl: 28800, type: 'PTR', flush: false },
+    { data: s.fqdn, name: '_http._tcp.local', ttl: 28800, type: 'PTR', flush: false },
+    { data: { port: 3000, target: 'example.com' }, name: s.fqdn, ttl: 120, type: 'SRV', flush: false },
+    { data: new Buffer('07666f6f3d626172', 'hex'), name: s.fqdn, ttl: 4500, type: 'TXT', flush: false },
     { data: '13.14.15.16', name: 'example.com', ttl: 120, type: 'A' },
     { data: '2001:db8::01:03', name: 'example.com', ttl: 120, type: 'AAAA' },
     { data: 'fe80::01:03', name: 'example.com', ttl: 120, type: 'AAAA' }
