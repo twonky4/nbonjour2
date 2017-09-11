@@ -31,7 +31,7 @@ bonjour.find({ type: 'http' }, function (service) {
 ### Initializing
 
 ```js
-var bonjour = require('nbonjour')([options])
+const bonjour = require('nbonjour').create([options])
 ```
 
 The `options` are optional and will be used when initializing the
@@ -79,6 +79,7 @@ Options (all optional):
 
 - `type` (string)
 - `subtypes` (array of strings)
+- `types`(type string | array of strings | array of {type: subtypes})
 - `protocol` (string) - defaults to `tcp`
 - `txt` (object) - passed into [dns-txt
   module](https://github.com/watson/dns-txt) contructor. Set to `{
