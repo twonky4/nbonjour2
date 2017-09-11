@@ -4,8 +4,7 @@ A Bonjour/Zeroconf protocol implementation in pure JavaScript. Publish
 services on the local network or discover existing services using
 multicast DNS.
 
-[![Build status](https://travis-ci.org/watson/bonjour.svg?branch=master)](https://travis-ci.org/watson/bonjour)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
+[![Build status](https://travis-ci.org/taoyuan/nbonjour.svg?branch=master)](https://travis-ci.org/taoyuan/nbonjour)
 
 ## Installation
 
@@ -16,14 +15,14 @@ npm install bonjour
 ## Usage
 
 ```js
-var bonjour = require('bonjour')()
+const bonjour = require('nbonjour').create();
 
 // advertise an HTTP server on port 3000
-bonjour.publish({ name: 'My Web Server', type: 'http', port: 3000 })
+bonjour.publish({ name: 'My Web Server', type: 'http', port: 3000 });
 
 // browse for all http services
 bonjour.find({ type: 'http' }, function (service) {
-  console.log('Found an HTTP server:', service)
+  console.log('Found an HTTP server:', service);
 })
 ```
 
@@ -32,7 +31,7 @@ bonjour.find({ type: 'http' }, function (service) {
 ### Initializing
 
 ```js
-var bonjour = require('bonjour')([options])
+var bonjour = require('nbonjour')([options])
 ```
 
 The `options` are optional and will be used when initializing the
