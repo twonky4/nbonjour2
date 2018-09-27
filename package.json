@@ -1,6 +1,6 @@
 {
 	"name": "nbonjour",
-	"version": "3.6.2",
+	"version": "3.6.3",
 	"description": "A Bonjour/Zeroconf implementation in pure JavaScript",
 	"main": "index.js",
 	"dependencies": {
