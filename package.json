@@ -8,12 +8,12 @@
 		"deep-equal": "^1.0.1",
 		"dns-equal": "^1.0.0",
 		"dns-txt": "^2.0.2",
-		"multicast-dns": "^6.1.1",
+		"multicast-dns": "^7.2.0",
 		"multicast-dns-service-types": "^1.1.0"
 	},
 	"devDependencies": {
 		"after-all": "^2.0.2",
-		"tape": "^4.8.0"
+		"tape": "^4.9.1"
 	},
 	"scripts": {
 		"test": "tape test/*.js"
