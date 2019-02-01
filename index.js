@@ -4,42 +4,38 @@ const Registry = require('./lib/registry');
 const Server = require('./lib/mdns-server');
 const Browser = require('./lib/browser');
 
-class Bonjour {
+function Bonjour(opts) {
+	if (!(this instanceof Bonjour)) return new Bonjour(opts);
+	this._server = new Server(opts);
+	this._registry = new Registry(this._server);
+}
 
-	static create(opts) {
-		return new Bonjour(opts);
-	}
+Bonjour.prototype.publish = function(opts) {
+	return this._registry.publish(opts);
+}
 
-	constructor(opts) {
-		this._server = new Server(opts);
-		this._registry = new Registry(this._server)
-	}
+Bonjour.prototype.unpublishAll = function(cb) {
+	this._registry.unpublishAll(cb);
+}
 
-	publish(opts) {
-		return this._registry.publish(opts)
-	}
+Bonjour.prototype.find = function(opts, onup) {
+	return new Browser(this._server.mdns, opts, onup);
+}
 
-	unpublishAll(cb) {
-		this._registry.unpublishAll(cb)
-	}
+Bonjour.prototype.findOne = function(opts, cb) {
+	let browser = new Browser(this._server.mdns, opts);
+	browser.once('up', function (service) {
+		browser.stop();
+		if (cb){
+			cb(service);
+		}
+	});
+	return browser;
+}
 
-	find(opts, onup) {
-		return new Browser(this._server.mdns, opts, onup)
-	}
-
-	findOne(opts, cb) {
-		const browser = new Browser(this._server.mdns, opts);
-		browser.once('up', function (service) {
-			browser.stop();
-			if (cb) cb(service)
-		});
-		return browser
-	}
-
-	destroy() {
-		this._registry.destroy();
-		this._server.mdns.destroy()
-	}
+Bonjour.prototype.destroy = function () {
+	this._registry.destroy();
+	this._server.mdns.destroy();
 }
 
 module.exports = Bonjour;

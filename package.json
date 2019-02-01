@@ -1,15 +1,15 @@
 {
-	"name": "nbonjour",
-	"version": "3.6.3",
-	"description": "A Bonjour/Zeroconf implementation in pure JavaScript",
+	"name": "nbonjour2",
+	"version": "3.7.0",
+	"description": "A Bonjour/Zeroconf implementation in pure JavaScript node 6 compatible",
 	"main": "index.js",
 	"dependencies": {
-		"array-flatten": "^2.1.1",
-		"deep-equal": "^1.0.1",
-		"dns-equal": "^1.0.0",
-		"dns-txt": "^2.0.2",
-		"multicast-dns": "^7.2.0",
-		"multicast-dns-service-types": "^1.1.0"
+		"array-flatten": "2.1.1",
+		"deep-equal": "1.0.1",
+		"dns-equal": "1.0.0",
+		"dns-txt": "2.0.2",
+		"multicast-dns": "7.2.0",
+		"multicast-dns-service-types": "1.1.0"
 	},
 	"devDependencies": {
 		"after-all": "^2.0.2",
@@ -20,7 +20,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/taoyuan/nbonjour.git"
+		"url": "https://github.com/twonky4/nbonjour2.git"
 	},
 	"keywords": [
 		"bonjour",
@@ -39,11 +39,15 @@
 	"contributors": [
 		{
 			"name": "Thomas Watson Steen <w@tson.dk> (https://twitter.com/wa7son)"
+		},
+		{
+			"name": "twonky4",
+			"email": "twonky4@gmx.de"
 		}
 	],
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/taoyuan/nbonjour/issues"
+		"url": "https://github.com/twonky4/nbonjour2/issues"
 	},
-	"homepage": "https://github.com/taoyuan/nbonjour"
+	"homepage": "https://github.com/twonky4/nbonjour2"
 }
